@@ -46,6 +46,59 @@ export interface PatientDiagnosis {
   }>;
 }
 
+// 환자 히스토리 브리핑 챗봇 응답 타입
+export interface TimelineEntry {
+  diagnosis_id: number;
+  date: string;
+  anatomy_site: string;
+  diagnosis: "benign" | "malignant";
+  confidence_score: number;
+}
+
+export interface BriefResponse {
+  type: "brief";
+  summary: { total_diagnoses: number; date_range: string };
+  timeline: TimelineEntry[];
+  narrative_summary: string;
+  recommendation: string;
+}
+
+export interface SimilarCase {
+  anonymized_label: string;
+  date: string;
+  anatomy_site: string;
+  diagnosis: "benign" | "malignant";
+  similarity: number;
+  shared_features: string[];
+  differences: string[];
+  clinical_note: string;
+}
+
+export interface SimilarCasesResponse {
+  type: "similar_cases";
+  cases: SimilarCase[];
+  answer_text: string;
+}
+
+export interface Citation {
+  diagnosis_id: number;
+  date: string;
+  anatomy_site: string;
+}
+
+export interface AnswerResponse {
+  type: "answer";
+  answer_text: string;
+  citations: Citation[];
+}
+
+export type ChatResponse = BriefResponse | SimilarCasesResponse | AnswerResponse;
+
+export interface ChatApiResponse {
+  session_id: string;
+  response: ChatResponse;
+}
+
 class ApiService {
   private async request<T>(
     endpoint: string,
@@ -154,6 +207,18 @@ class ApiService {
 
     // 실제 API 호출
     return this.request(`/diagnosis/${patientId}`);
+  }
+
+  // 환자 히스토리 브리핑 챗봇
+  async sendChatMessage(
+    patientId: string,
+    message: string,
+    sessionId?: string | null
+  ): Promise<ChatApiResponse> {
+    return this.request<ChatApiResponse>(`/patients/${patientId}/chat`, {
+      method: "POST",
+      body: JSON.stringify({ message, session_id: sessionId ?? null }),
+    });
   }
 }
 

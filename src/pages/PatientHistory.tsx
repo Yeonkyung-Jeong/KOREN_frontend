@@ -26,6 +26,7 @@ import {
   CommunicationSummary,
 } from "@/services/api";
 import { useToast } from "@/hooks/use-toast";
+import PatientChatPanel from "@/components/chat/PatientChatPanel";
 
 const PatientHistory = () => {
   const { patientId } = useParams<{ patientId: string }>();
@@ -343,6 +344,13 @@ const PatientHistory = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* 환자 히스토리 브리핑 챗봇 */}
+        {patientId && (
+          <div className="mt-8">
+            <PatientChatPanel patientId={patientId} />
+          </div>
+        )}
 
         {/* 액션 버튼들 */}
         <div className="mt-8 flex justify-center">
