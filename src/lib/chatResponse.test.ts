@@ -16,7 +16,6 @@ const brief: BriefResponse = {
   summary: { total_diagnoses: 1, date_range: "2025-01-01 ~ 2025-01-01" },
   timeline: [],
   narrative_summary: "요약",
-  recommendation: "권고",
 };
 
 const similarCases: SimilarCasesResponse = {

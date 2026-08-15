@@ -49,10 +49,6 @@ const BriefResponseCard = ({ response }: BriefResponseCardProps) => {
       <p className="text-sm text-blue-900 leading-relaxed">
         {response.narrative_summary}
       </p>
-
-      <div className="text-sm text-blue-800 bg-blue-100 rounded p-2">
-        {response.recommendation}
-      </div>
     </div>
   );
 };

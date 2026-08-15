@@ -108,7 +108,7 @@ const PatientHistory = () => {
 
   const formatSummaryText = () => {
     if (!summary) return "";
-    return `[의사 소견]\n${summary.의사_소견}\n\n[환자 우려점]\n${summary.환자의_우려점}\n\n[진료 계획]\n${summary.진료_계획}\n\n[처방]\n${summary.처방}`;
+    return `[의사 소견]\n${summary["의사 소견"]}\n\n[환자 우려점]\n${summary["환자의 우려점"]}\n\n[진료 계획]\n${summary["진료 계획"]}\n\n[처방]\n${summary.처방}`;
   };
 
   if (isLoading) {
@@ -297,7 +297,7 @@ const PatientHistory = () => {
                         의사 소견
                       </span>
                       <p className="text-purple-700 text-sm leading-relaxed">
-                        {summary.의사_소견}
+                        {summary["의사 소견"]}
                       </p>
                     </div>
 
@@ -308,7 +308,7 @@ const PatientHistory = () => {
                         환자 우려점
                       </span>
                       <p className="text-purple-700 text-sm leading-relaxed">
-                        {summary.환자의_우려점}
+                        {summary["환자의 우려점"]}
                       </p>
                     </div>
 
@@ -319,7 +319,7 @@ const PatientHistory = () => {
                         진료 계획
                       </span>
                       <p className="text-purple-700 text-sm leading-relaxed">
-                        {summary.진료_계획}
+                        {summary["진료 계획"]}
                       </p>
                     </div>
 

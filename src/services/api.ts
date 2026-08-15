@@ -26,9 +26,9 @@ export interface ConversationInput {
 }
 
 export interface CommunicationSummary {
-  의사_소견: string;
-  환자의_우려점: string;
-  진료_계획: string;
+  "의사 소견": string;
+  "환자의 우려점": string;
+  "진료 계획": string;
   처방: string;
 }
 
@@ -60,7 +60,6 @@ export interface BriefResponse {
   summary: { total_diagnoses: number; date_range: string };
   timeline: TimelineEntry[];
   narrative_summary: string;
-  recommendation: string;
 }
 
 export interface SimilarCase {
