@@ -38,18 +38,6 @@ const SimilarCasesResponseCard = ({ response }: SimilarCasesResponseCardProps) =
               {c.date} · {c.anatomy_site}
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="flex-1 bg-purple-200 rounded-full h-1.5">
-                <div
-                  className="bg-purple-600 h-1.5 rounded-full"
-                  style={{ width: `${c.similarity * 100}%` }}
-                />
-              </div>
-              <span className="text-xs text-purple-800 font-medium">
-                유사도 {(c.similarity * 100).toFixed(0)}%
-              </span>
-            </div>
-
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="space-y-1">
                 {c.shared_features.map((f, i) => (
